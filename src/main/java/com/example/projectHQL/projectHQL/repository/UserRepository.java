@@ -21,7 +21,7 @@ public interface UserRepository extends CrudRepository<UserDTO, Long> {
     @Query("select user from UserDTO user where user.id like :id")
     UserDTO findUserById(@Param("id") Long id);
 
-    @Query("select user from UserDTO user where user.username like %:username%")
+    @Query("select user from UserDTO user where user.username like %:username% order by username")
     List<UserDTO> findByUserNameContains(@Param("username") String username);
 
     @Modifying
